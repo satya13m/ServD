@@ -1,19 +1,29 @@
-"use client"
+"use client";
 
-import AddToPantryModal from '@/components/AddToPantryModal';
-import PricingModal from '@/components/PricingModal';
-import { Button } from '@/components/ui/button';
-import {  ChefHat, Package, Plus, Sparkles ,Loader2, Edit2, Trash2, Check,  X} from 'lucide-react';
-import React, { useState,useEffect } from 'react'
-import useFetch from 'hooks/use-fetch';
+import AddToPantryModal from "@/components/AddToPantryModal";
+import PricingModal from "@/components/PricingModal";
+import { Button } from "@/components/ui/button";
+import {
+  ChefHat,
+  Package,
+  Plus,
+  Sparkles,
+  Loader2,
+  Edit2,
+  Trash2,
+  Check,
+  X,
+} from "lucide-react";
+import React, { useState, useEffect } from "react";
+import useFetch from "hooks/use-fetch";
 import {
   deletePantryItem,
   getPantryItems,
   updatePantryItem,
 } from "@/actions/pantry.actions";
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { toast } from 'sonner';
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 
 const PantryPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,7 +73,7 @@ const PantryPage = () => {
 
   //refresh after update
   useEffect(() => {
-    if (updateData?.success ) {
+    if (updateData?.success) {
       toast.success("Item name or quantity updated");
       setEditingId(null);
       fetchItems();
@@ -109,7 +119,7 @@ const PantryPage = () => {
     <div className="min-h-screen bg-stone-50 pt-24 pb-16 px-4">
       <div className="container mx-auto max-w-5xl">
         <div className="mb-4">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
             <div className="flex items-center gap-3">
               <Package className="w-16 h-16 text-orange-600" />
               <div>
@@ -124,7 +134,8 @@ const PantryPage = () => {
             <Button
               variant="primary"
               size="lg"
-              className="hidden md:flex"
+              // className="hidden md:flex"
+              className="flex w-full md:w-auto mt-4 md:mt-0"
               onClick={() => setIsModalOpen(true)}
             >
               <Plus className="w-5 h-5" />
@@ -338,6 +349,6 @@ const PantryPage = () => {
       />
     </div>
   );
-};;;
+};
 
 export default PantryPage;
