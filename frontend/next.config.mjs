@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverComponentsHmrCache: false, // defaults to true
+    serverComponentsHmrCache: false,
   },
   images: {
     remotePatterns: [
@@ -17,8 +17,22 @@ const nextConfig = {
         protocol: "http",
         hostname: "localhost",
       },
+      // ✅ Added: Strapi Cloud (production image hosting)
+      {
+        protocol: "https",
+        hostname: "leading-sparkle-685c49a4449.strapiapp.com",
+      },
+      // ✅ Added: Strapi Cloud media uploads subdomain
+      {
+        protocol: "https",
+        hostname: "*.strapiapp.com",
+      },
+      // ✅ Added: Clerk user profile images
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+      },
     ],
-    domains: ["www.themealdb.com"],
   },
 };
 
